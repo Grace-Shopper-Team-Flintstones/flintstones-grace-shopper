@@ -393,6 +393,17 @@ nav h3 {
   width: 200px;
 }
 
+.album-filter-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.album-filter-container>div {
+  display: flex;
+}
+
+/* END OF ALL ALBUM STYLE */
+
 .single-album-container {
   display: flex;
   justify-content: center;

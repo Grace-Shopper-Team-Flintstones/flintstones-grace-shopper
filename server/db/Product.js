@@ -13,7 +13,7 @@ const Product = db.define('product', {
   price: {
     type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
-    validate:{
+    validate: {
       isDecimal: true,
       min: 0.0,
     },
@@ -29,6 +29,9 @@ const Product = db.define('product', {
   description: {
     type: Sequelize.TEXT,
   },
+  genre: {
+    type: Sequelize.STRING
+  }
 });
 
 module.exports = Product;

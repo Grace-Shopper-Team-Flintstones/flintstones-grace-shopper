@@ -115,6 +115,7 @@ const syncAndSeed = async () => {
       stock: 10,
       image: 'https://i.imgur.com/MZAcECn.png',
       description: 'lorem ipsum some text for product1...',
+      genre: 'rap'
     });
 
     const product2 = await Product.create({
@@ -123,6 +124,7 @@ const syncAndSeed = async () => {
       stock: 15,
       image: 'https://i.imgur.com/GI9lCcj.png',
       description: 'lorem ipsum some text for product2...',
+      genre: 'pop'
     });
 
     const product3 = await Product.create({
@@ -131,6 +133,7 @@ const syncAndSeed = async () => {
       stock: 25,
       image: 'https://i.imgur.com/hQw5iCB.png',
       description: 'lorem ipsum some text for product3...',
+      genre: 'rock'
     });
 
     const product4 = await Product.create({
@@ -139,6 +142,15 @@ const syncAndSeed = async () => {
       stock: 10,
       image: 'https://i.imgur.com/0H3SsJa.png',
       description: 'lorem ipsum some text for product4...',
+      genre: 'jazz'
+    });
+    const product5 = await Product.create({
+      title: 'product5',
+      price: 99.99,
+      stock: 10,
+      image: 'https://i.imgur.com/MZAcECn.png',
+      description: 'lorem ipsum some text for product1...',
+      genre: 'rap'
     });
 
     // seeding successful message
