@@ -2,18 +2,19 @@ import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logoutAccount } from "../../store/reducers1/authReducer";
+import { clearCart } from '../../store/reducers1/cartReducer';
 import LogIn from "../LogIn/LogIn";
 
 
 const AccountNav = () => {
     const account = useSelector((state) => state.account);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
-    const logout = () => {
-        dispatch(logoutAccount());
-        navigate('/');
-    };
+    // const logout = () => {
+    //     dispatch(logoutAccount());
+    //     navigate('/');
+    // };
 
     return account.id? (
         <div className='account-welcome'>
@@ -21,7 +22,7 @@ const AccountNav = () => {
             <Link to='/account-nav/account' className='username'>
                 {account.username}
             </Link>
-            <button onClick={logout}>Log Out</button>
+            <button onClick={() => {dispatch(logoutAccount()); dispatch(clearCart());}}>Log Out</button>
         </div>
     ):(
         <LogIn />

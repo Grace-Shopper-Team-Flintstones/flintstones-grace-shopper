@@ -17,7 +17,13 @@ const Order = db.define('order', {
     type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV4,
   },
-
+  orderTotal: {
+    type: Sequelize.FLOAT,
+    defaultValue: 0,
+    validate: {
+      min: 0
+    },
+  },
 });
 
 module.exports = Order;

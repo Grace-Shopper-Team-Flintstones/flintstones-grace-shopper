@@ -1,11 +1,12 @@
 import axios from 'axios';
 import  history from '../../utils/history';
+import { accountAttachCart, fetchCart } from './cartReducer';
 
 
 // const ADD_ACCOUNT = 'ADD_ACCOUNT';
 // const LOG_IN = 'LOG_IN';
 // const LOG_OUT = 'LOG_OUT';
-// const UPDATE_ACCOUNT = 'UPDATE_ACCOUNT';
+// const UPDATE_ACCOUNT = 'UPDATE_ACCOUNT';/
 
 const SET_AUTH = 'SET_AUTH';
 
@@ -30,7 +31,8 @@ export const fetchAccountData = () => {
                     },
                 });
                 //can add a fetchCart call here
-                dispatch(setAuth(res.data));
+                dispatch(fetchCart(res.data.id, null));
+                return dispatch(setAuth(res.data));
             }
         } catch (error) {
             console.log('AUTHUSER THUNK ERROR ', error)
@@ -46,8 +48,12 @@ export const attemptLogin = (authInfo) => {
             const res = await axios.post('/auth/login', authInfo);
             console.log('THUNK DATA', res.data)
             window.localStorage.setItem('token', res.data);
+            if(localStorage.UUID !== undefined){
+                dispatch(accountAttachCart(res.data.id, localStorage.UUID));
+            }
             dispatch(fetchAccountData());
-            history.push('/');
+            localStorage.removeItem('UUID');
+            history.push('/products');
         }catch(error){
             console.log('ATTEMPT PASSWORD THUNK ERROR ', error);
         }
@@ -59,7 +65,7 @@ export const createAccount = (authInfo) => {
         try {
             const res = await axios.post('/auth/signup', authInfo);
             window.localStorage.setItem('token', res.data.token);
-            dispatch(createCart(res.data.id, localStorage.UUID))
+            dispatch(accountAttachCart(res.data.id, localStorage.UUID))
         } catch (error) {
             console.log('CREATE ACCOUNT THUNK ERROR ', error);
         }
@@ -69,7 +75,7 @@ export const createAccount = (authInfo) => {
 export const logoutAccount = () => {
     return(dispatch) => {
         window.localStorage.removeItem('token');
-        history.push('/');
+        history.push('/products');
         return{
             type: SET_AUTH,
             auth: {}

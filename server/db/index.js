@@ -152,9 +152,9 @@ const syncAndSeed = async () => {
     Seeding successful!
     Check the 'flintstones_gh' database for updates`,
 
-      Object.keys(Order.prototype),
-      Object.keys(Product.prototype),
-      Object.keys(LineItem.prototype)
+      // Object.keys(Order.prototype),
+      // Object.keys(Product.prototype),
+      // Object.keys(LineItem.prototype)
       // test
     );
   } catch (err) {

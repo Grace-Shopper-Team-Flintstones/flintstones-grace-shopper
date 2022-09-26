@@ -7,6 +7,8 @@ import  authReducer  from "./reducers1/authReducer";
 import  guestCartReducer  from './reducers1/guestCartReducer';
 import  albumReducer  from './reducers2/albumReducer';
 import  adminReducer  from './reducers1/adminReducer';
+import cartReducer from './reducers1/cartReducer';
+
 
 
 
@@ -17,6 +19,7 @@ const rootReducer = combineReducers({
     account: authReducer,
     guestCart: guestCartReducer,
     admin: adminReducer,
+    cart: cartReducer,
    
 })
 
