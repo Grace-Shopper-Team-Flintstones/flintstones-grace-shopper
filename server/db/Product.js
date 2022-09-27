@@ -28,6 +28,7 @@ const Product = db.define('product', {
   },
   description: {
     type: Sequelize.TEXT,
+    defaultValue: 'No description provided by retailer.',
   },
   genre: {
     type: Sequelize.STRING,

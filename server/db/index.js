@@ -6,15 +6,15 @@ const Sequelize = require('sequelize');
 const Account = require('./Account');
 const Order = require('./Order');
 // const Genre = require('./Genre');
-const LineItem = require('./LineItem');
+//const LineItem = require('./LineItem');
 const Product = require('./Product');
 
 //associations
-Order.belongsTo(Account);
-Account.hasMany(Order);
+// Order.belongsTo(Account);
+// Account.hasMany(Order);
 
-Product.belongsToMany(Order, { through: LineItem });
-Order.belongsToMany(Product, { through: LineItem });
+Account.belongsToMany(Product, { through: Order, unique: false });
+Product.belongsToMany(Account, { through: Order, unique: false });
 
 
 const syncAndSeed = async () => {
@@ -72,20 +72,20 @@ const syncAndSeed = async () => {
       // ]
     });
 
-    const order2 = await Order.create({
-      isCart: false,
-      accountId: 2,
-    });
+    // const order2 = await Order.create({
+    //   isCart: false,
+    //   accountId: 2,
+    // });
 
-    const order3 = await Order.create({
-      isCart: false,
-      accountId: 3,
-    });
+    // const order3 = await Order.create({
+    //   isCart: false,
+    //   accountId: 3,
+    // });
 
-    const order4 = await Order.create({
-      isCart: false,
-      accountId: 4,
-    });
+    // const order4 = await Order.create({
+    //   isCart: false,
+    //   accountId: 4,
+    // });
 
     // Genre
     // const pop = await Genre.create({
@@ -114,6 +114,7 @@ const syncAndSeed = async () => {
       stock: 10,
       image: 'https://i.imgur.com/MZAcECn.png',
       description: 'lorem ipsum some text for product1...',
+      genre: 'pop'
     });
 
     const product2 = await Product.create({
@@ -122,6 +123,7 @@ const syncAndSeed = async () => {
       stock: 15,
       image: 'https://i.imgur.com/GI9lCcj.png',
       description: 'lorem ipsum some text for product2...',
+      genre: 'rock'
     });
 
     const product3 = await Product.create({
@@ -130,6 +132,7 @@ const syncAndSeed = async () => {
       stock: 25,
       image: 'https://i.imgur.com/hQw5iCB.png',
       description: 'lorem ipsum some text for product3...',
+      genre: 'classical'
     });
 
     const product4 = await Product.create({
@@ -138,6 +141,7 @@ const syncAndSeed = async () => {
       stock: 10,
       image: 'https://i.imgur.com/0H3SsJa.png',
       description: 'lorem ipsum some text for product4...',
+      genre: 'hip hop'
     });
 
     // seeding successful message

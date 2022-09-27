@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchInventory, deleteThisProduct, clearProduct } from '../../store/reducers1/adminReducer';
 
 
 function ProductList() {
     const dispatch = useDispatch()
-    const inventory = useSelector((state) => state.admin);
+    const inventory = useSelector((state) => state.products);
 
     console.log('PRODUCT LIST', inventory);
 

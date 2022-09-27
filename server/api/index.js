@@ -5,14 +5,11 @@ router.get('/', (req, res) => {
     res.send('hello')
 })
 
-router.use('/', require('./products'))
-router.use('/', require('./accounts'))
-router.use('/', require('./orders'))
-router.use('/', require('./lineitems'))
-router.use('/', require('./genres'))
-
-router.use('/', require('./cart'))
-router.use('/', require('./admin'))
+router.use('/products', require('./products'))
+router.use('/accounts', require('./accounts'))
+router.use('/orders', require('./orders'))
+router.use('/orderInfo', require('./orderInfo'))
+router.use('/admin', require('./admin'))
 
 
 router.use((req, res, next) => {

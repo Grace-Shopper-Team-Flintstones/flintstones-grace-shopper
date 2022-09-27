@@ -6,23 +6,28 @@ const Order = db.define('order', {
     type: Sequelize.BOOLEAN,
     defaultValue: true,
   },
-  totalPrice: {
-    type: Sequelize.FLOAT,
-    defaultValue: 0,
-    validate: {
-      min: 0,
-    },
+  ordId: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+    unique: true,
   },
-  UUID: {
-    type: Sequelize.UUID,
-    defaultValue: Sequelize.UUIDV4,
+  accountId: {
+    type: Sequelize.INTEGER,
   },
-  orderTotal: {
-    type: Sequelize.FLOAT,
-    defaultValue: 0,
-    validate: {
-      min: 0
-    },
+  productId: {
+    type: Sequelize.INTEGER,
+  },
+  quantity: {
+    type: Sequelize.INTEGER,
+  },
+  dateOrdered: {
+    type: Sequelize.STRING,
+    defaultValue: null,
+  },
+  itemPrice: {
+    type: Sequelize.DECIMAL,
+    allowNull:false,
   },
 });
 

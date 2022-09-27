@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProduct, fetchSingleProduct } from '../../store/reducers1/adminReducer'
 import { useParams } from 'react-router-dom';
-// import { produceWithPatches } from 'immer';
+
 
 function ModifyProduct() {
     const dispatch = useDispatch()
@@ -56,38 +56,6 @@ function ModifyProduct() {
         }, [product])
     })
 
-    // const [id, setId] = useState(0)
-    // const [title, setTitle] = useState('')
-    // const [price, setPrice] = useState('')
-    // const [stock, setStock] = useState(0)
-    // const [image, setImage] = useState('')
-    // const [description, setDescription] = useState('')
-
-    // const handleId = (event) => {
-    //     console.log(event.target.value)
-    //     setId(Number(event.target.value))
-    // }
-    // const handleTitle = (event) => {
-    //     setTitle(event.target.value)
-    // }
-    // const handlePrice = (event) => {
-    //     setPrice(Number(event.target.value))
-    // }
-    // const handleStock = (event) => {
-    //     setStock(Number(event.target.value))
-    // }
-    // const handleImage = (event) => {
-    //     setImage(event.target.value)
-    // }
-    // const handleDescription = (event) => {
-    //     setDescription(event.target.value)
-    // }
-    // const handleSubmit = (event) => {
-    //     event.preventDefault()
-    //     // console.log(title, price, stock, image, description)
-    //     updateProduct({ id, title, price, stock, image, description })(dispatch)
-    // }
-
     return (
         <>
 
@@ -103,8 +71,8 @@ function ModifyProduct() {
                     <label htmlFor='image'>Image:</label>
                     <input name='image' value={form.image} onChange={handleChange('image')} />
                     <label htmlFor='description'>Title:</label>
-                    <textarea name='description' value={form.description} onChange={handleChange('description')}></textarea>
-                    <button type='submit'>Add Product</button>
+                    <input name='description' value={form.description} onChange={handleChange('description')}/>
+                    <button type='submit'>Edit Product</button>
                 </form>
             </div>
         </>

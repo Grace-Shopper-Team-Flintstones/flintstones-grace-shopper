@@ -48,11 +48,11 @@ const Account = db.define('account', {
   },
   address: {
     type: Sequelize.STRING,
+  },
+  paymentInfo: {
+    type: Sequelize.STRING,
+    defaultValue: 'XXX-XXX-XXXX',
   }
-  // paymentInfo: {
-  //   type: Sequelize.STRING,
-  //   defaultValue: 'XXX-XXX-XXXX',
-  // }
 });
 
 // // TODO: include additional helper functions where needed (placeholders for now)
@@ -124,10 +124,10 @@ Account.beforeBulkCreate((accounts) => Promise.all(account.map(hashPassword)));
 
 //cart prototypes
 
-Account.prototype.addToCart = () => {};
-Account.prototype.createOrder = () => {};
-Account.prototype.cancelOrder = () => {};
-Account.prototype.cancelOrder = () => {};
+// Account.prototype.addToCart = () => {};
+// Account.prototype.createOrder = () => {};
+// Account.prototype.cancelOrder = () => {};
+// Account.prototype.cancelOrder = () => {};
 
 module.exports = Account;
 

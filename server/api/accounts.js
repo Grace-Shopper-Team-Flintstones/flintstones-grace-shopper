@@ -3,7 +3,7 @@ const router = require('express').Router();
 const Account = require('../db/Account');
 const { isAdmin, requireToken } = require('./gateKeeper');
 
-router.get('/accounts',requireToken, isAdmin, async (req, res, next) => {
+router.get('/',requireToken, isAdmin, async (req, res, next) => {
     try {
         const accounts = await Account.findAll();
         res.send(accounts);
@@ -12,7 +12,7 @@ router.get('/accounts',requireToken, isAdmin, async (req, res, next) => {
     }
 });
 
-router.post('/accounts', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     try {
         req.body.isAdmin = false;
         const account = await Account.create(req.body)
@@ -23,7 +23,17 @@ router.post('/accounts', async (req, res, next) => {
     }
 });
 
-router.put('/accounts/:id', requireToken, async(req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
+    try {
+      const deleteAccount = await Account.findByPk(req.params.id);
+      deleteAccount.destroy();
+      res.sendStatus(200);
+    } catch (error) {
+      next(error);
+    }
+  });
+
+router.put('/:id', requireToken, async(req, res, next) => {
     try{
         const account = await Account.findByPk(req.account.id);
         await account.update(req.body);
