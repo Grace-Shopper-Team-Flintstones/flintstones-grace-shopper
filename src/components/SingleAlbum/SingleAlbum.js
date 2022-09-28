@@ -8,13 +8,13 @@ function SingleAlbum() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  const [ productId, setProductId ] = useState(Infinity);
-  const [ addProduct, setAddProduct ] = useState(1);
+  const [productId, setProductId] = useState(Infinity);
+  const [addProduct, setAddProduct] = useState(1);
   const album = useSelector((state) => state.singleAlbum);
   const auth = useSelector((state) => state.account);
   const cart = useSelector((state) => state.cart);
 
-console.log('SINGLE ALBUM', album);
+  console.log('SINGLE ALBUM', album);
   console.log('ALBUM AUTH', auth);
   console.log('CART AUTH', cart);
 
@@ -31,29 +31,29 @@ console.log('SINGLE ALBUM', album);
 
   console.log('SING ALBUM ITEMID', productId);
   console.log('')
-  
-  
+
+
   const accountId = auth.id || 0;
   let UUID = cart.UUID || 'empty';
-  if(accountId === 0 && UUID === 'empty' && localStorage.UUID !== undefined){
+  if (accountId === 0 && UUID === 'empty' && localStorage.UUID !== undefined) {
     UUID = localStorage.getItem('UUID');
   }
-   
-//   const handleChange = (props) => (event) => {
-//     setAddProduct({
-//         ...addProduct,
-//         [props]: event.target.value,
-//     });
-// };
 
-//   const handleAddProduct = () => {
-//     if(productId !== Infinity){
-//       dispatch(createCart(productId, accountId, UUID));
-//       setProductId(Infinity);
-//     }
-//     if()
-//   }
-  
+  //   const handleChange = (props) => (event) => {
+  //     setAddProduct({
+  //         ...addProduct,
+  //         [props]: event.target.value,
+  //     });
+  // };
+
+  //   const handleAddProduct = () => {
+  //     if(productId !== Infinity){
+  //       dispatch(createCart(productId, accountId, UUID));
+  //       setProductId(Infinity);
+  //     }
+  //     if()
+  //   }
+
 
   return loading ? (
     <div>Loading Album...</div>
@@ -71,26 +71,27 @@ console.log('SINGLE ALBUM', album);
         <p className='single-album-desc'>{album.description}</p>
 
         <p>{album.stock > 0 ? 'in stock' : 'out of stock'}</p>
-        {album.stock > 0 ? 
-          <><a><input type='number' min='1' max={album.stock} size='2' onChange={(event) =>
-          changeAmount(Number(event.target.value))}></input>
-          <p>{Number(album.price).toFixed(2)}</p>
-          <button onClick={() => {
-            if(productId !== Infinity){
-              dispatch(createCart(productId, accountId, UUID));
-              // dispatch(updateQuantities(cartId, UUID, productId, 'increment', 1))
-              setProductId(Infinity)
-            } 
-          }}>Add to Cart</button>
-        </a></> : <a><p>Out of stock, check again soon!</p></a>
+        {album.stock > 0 ?
+          <>
+            {/* <input type='number' min='1' max={album.stock} size='2' onChange={(event) =>
+            changeAmount(Number(event.target.value))}></input> */}
+            <p>{Number(album.price).toFixed(2)}</p>
+            <button onClick={() => {
+              if (productId !== Infinity) {
+                dispatch(createCart(productId, accountId, UUID));
+                // dispatch(updateQuantities(cartId, UUID, productId, 'increment', 1))
+                setProductId(Infinity)
+              }
+            }}>Add to Cart</button>
+          </> : <a><p>Out of stock, check again soon!</p></a>
         }
       </div>
-      
+
     </div>
   );
-        }
-      
-    
+}
+
+
 
 
 export default SingleAlbum;

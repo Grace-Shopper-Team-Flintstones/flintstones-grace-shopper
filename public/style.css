@@ -782,6 +782,37 @@ nav h3:hover {
   transition: ease-in-out 0.2s;
 }
 
+.lineitem-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid lightblue;
+  margin: 50px 20%;
+  padding-bottom: 30px;
+  box-shadow: 10px 10px lightblue;
+  transition: ease-in-out 0.2s;
+}
+
+.lineitem-container:hover {
+  border: 3px solid slateblue;
+  box-shadow: 15px 15px slateblue;
+  transition: ease-in-out 0.2s;
+}
+
+.lineitem-container img {
+  text-align: center;
+  width: 400px;
+}
+
+.lineitem-long-text {
+  width: 40%;
+}
+
+.button-container {
+  margin-top: 10px;
+  display: flex;
+}
+
 @keyframes slideDown {
   0% {
     transform: translateY(-50px);
