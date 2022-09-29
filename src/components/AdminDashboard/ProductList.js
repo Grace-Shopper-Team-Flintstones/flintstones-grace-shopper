@@ -16,12 +16,16 @@ function ProductList() {
         // dispatch(deleteThisProduct())
     }, []);
 
+    // useEffect(() => {
+
+    // }, [inventory])
+
 
     return (
 
         <div className='product-list-wrap'>
             {inventory ? inventory.map((product) => (
-                <div className='product-list-container' key={`${product.id}`}>
+                <div className='product-list-container' key={`${product.createdAt}`}>
                     <h3>Product Id: {product.id}</h3>
                     <img src={`${product.image}`} />
                     <h3>{product.title}</h3>

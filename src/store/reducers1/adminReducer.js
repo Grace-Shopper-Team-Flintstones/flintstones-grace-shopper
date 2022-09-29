@@ -65,18 +65,6 @@ export const addProductThunk = (product) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.post('/api/admin/products', product)
-      // dispatch(addProduct(data))
-      // const token = window.localStorage.getItem('token');
-      // history.push('/admin')
-      // console.log(history)
-      // if (token) {
-      //   var { data } = await axios.post('/api/admin/products', product, {
-      //     headers: {
-      //       authorization: token
-      //     }
-      //   })
-      // }
-      console.log(data)
       dispatch(addProduct(data))
 
     } catch (error) {
@@ -85,37 +73,6 @@ export const addProductThunk = (product) => {
   }
 }
 
-// export const getAccountThunk = () =>  {
-//   try {
-//     return async (dispatch) => {
-//       const { data } = await axios.get('/api/admin/accounts')
-//       dispatch(getAccount(data))
-//     }
-//   } catch (error) {
-//     console.log('uh oh something went wrong getting accounts.', error);
-//   }
-// }
-
-
-// export const addProductThunk = (product, history) => {
-//   return async (dispatch) => {
-//     try {
-//       console.log(product)
-//       const token = window.localStorage.getItem('token');
-//       if (token) {
-//         await axios.post('/api/admin/products', product, {
-//           headers: {
-//             authorization: token
-//           }
-//         });
-//       }
-//       dispatch(getProductsThunk());
-//       history.push('/admin');
-//     } catch (error) {
-//       console.log('uh oh something went wrong adding products.', error);
-//     }
-//   };
-// };
 
 export const fetchInventory = () => {
   return async (dispatch) => {
