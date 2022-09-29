@@ -26,7 +26,7 @@ function ProductList() {
                     <img src={`${product.image}`} />
                     <h3>{product.title}</h3>
                     <h3>${product.price}</h3>
-                    <p>{product.description}</p>
+                    <p className='product-list-desc'>{product.description}</p>
                     <button onClick={() => dispatch(deleteThisProduct(product.id))}>Delete Product</button>
                 </div>
             ))

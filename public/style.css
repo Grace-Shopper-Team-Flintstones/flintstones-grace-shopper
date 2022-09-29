@@ -199,6 +199,10 @@ nav h3:hover {
   transition: ease-in-out 0.2s;
 }
 
+.product-list-desc {
+  width: 300px;
+}
+
 .edit-container {
   border: 3px solid lightblue;
   text-align: center;

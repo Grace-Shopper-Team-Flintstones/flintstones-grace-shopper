@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { editAccountThunk } from '../../store/reducers1/accountsReducer'
-
+import { editAccountThunk, getAccountThunk } from '../../store/reducers1/accountsReducer'
+import { fetchInventory } from '../../store/reducers1/adminReducer'
 function ModifyUsers() {
     const dispatch = useDispatch()
 
@@ -12,6 +12,11 @@ function ModifyUsers() {
     const [lastName, setLName] = useState('')
     const [isAdmin, setAdmin] = useState(false)
     const [address, setAddress] = useState('')
+
+    // useEffect(() => {
+    //     dispatch(getAccountThunk())
+    //     dispatch(fetchInventory())
+    // }, [])
 
     const handleId = (event) => {
         setId(Number(event.target.value))
@@ -48,9 +53,9 @@ function ModifyUsers() {
     return (
         <>
             <div className='edit-container'>
-                <h2>Edit Account</h2>
+                <h2>Edit Users</h2>
                 <form onSubmit={handleSubmit}>
-                    <p>Account Id</p>
+                    <p>User Id</p>
                     <input onChange={handleId} type='text' />
                     <p>Username</p>
                     <input onChange={handleUsername} type='text' />

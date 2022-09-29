@@ -4,7 +4,7 @@ import { getAccountThunk, deleteAccountThunk } from '../../store/reducers1/accou
 // import LoadUsers from './LoadUsers';
 // import RemoveUser from './RemoveUser';
 // import ModifyUser from './ModifyUser';
-
+import { fetchInventory } from '../../store/reducers1/adminReducer';
 
 const AllUsers = () => {
     const [addTorf, setAddTorf] = useState(false)
@@ -18,6 +18,8 @@ const AllUsers = () => {
 
     useEffect(() => {
         dispatch(getAccountThunk())
+        dispatch(fetchInventory())
+
     }, [])
 
 
