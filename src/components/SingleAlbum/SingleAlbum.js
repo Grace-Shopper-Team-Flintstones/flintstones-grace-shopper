@@ -8,13 +8,8 @@ function SingleAlbum() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-<<<<<<< HEAD
   const [productId, setProductId] = useState(Infinity);
-  const [addProduct, setAddProduct] = useState(1);
-=======
-  const [ productId, setProductId ] = useState(Infinity);
-  const [ productAmount, setProductAmount ] = useState(1);
->>>>>>> main
+  const [productAmount, setProductAmount] = useState(1);
   const album = useSelector((state) => state.singleAlbum);
   const auth = useSelector((state) => state.account);
   const cart = useSelector((state) => state.cart);
@@ -34,15 +29,6 @@ function SingleAlbum() {
     }
   }, [album]);
 
-<<<<<<< HEAD
-  console.log('SING ALBUM ITEMID', productId);
-  console.log('')
-
-
-  const accountId = auth.id || 0;
-  let UUID = cart.UUID || 'empty';
-  if (accountId === 0 && UUID === 'empty' && localStorage.UUID !== undefined) {
-=======
   const changeAmount = prop => (event) => {
     setProductAmount({
       ...productAmount,
@@ -53,8 +39,7 @@ function SingleAlbum() {
 
   const accountId = auth.id || 0;
   let UUID = cart.UUID || 'empty';
-  if(accountId == 0 && UUID == 'empty' && localStorage.UUID !== undefined){
->>>>>>> main
+  if (accountId == 0 && UUID == 'empty' && localStorage.UUID !== undefined) {
     UUID = localStorage.getItem('UUID');
   }
 
